@@ -1,0 +1,1 @@
+# myNvim-configByRu22-S
