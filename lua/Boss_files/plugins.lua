@@ -30,7 +30,6 @@ local plugins = {
 	{
 		"rebelot/kanagawa.nvim",
 	},
-	
 	{'williamboman/mason.nvim'},
 	{'williamboman/mason-lspconfig.nvim'},
 
@@ -38,7 +37,27 @@ local plugins = {
 	{'neovim/nvim-lspconfig'},
 	{'hrsh7th/cmp-nvim-lsp'},
 	{'hrsh7th/nvim-cmp'},
-	{'L3MON4D3/LuaSnip'},
+	{	'L3MON4D3/LuaSnip',
+		dependencies = { "rafamadriz/friendly-snippets" },
+	},
+	{
+		"ariedov/android-nvim",
+		config = function()
+      			vim.g.android_sdk = "~/appsFor_.andev/android/sdk"
+    			require('android-nvim').setup()
+    		end
+	},
+
+
+	{
+    		'nvim-flutter/flutter-tools.nvim',
+    		lazy = false,
+    		dependencies = {
+        		'nvim-lua/plenary.nvim',
+        		'stevearc/dressing.nvim', -- optional for vim.ui.select
+    		},
+	    	config = true,
+	},
 }
 
 require("lazy").setup(plugins, opts)
