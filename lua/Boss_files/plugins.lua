@@ -1,3 +1,4 @@
+local vim = vim -- Explicitly declare global `vim` (fixes undefined global warning)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
@@ -43,7 +44,7 @@ local plugins = {
 	{
 		"ariedov/android-nvim",
 		config = function()
-      			vim.g.android_sdk = "~/appsFor_.andev/android/sdk"
+      			vim.g.android_sdk = "~/appsFor_andev/sdkFor_andev/"
     			require('android-nvim').setup()
     		end
 	},
@@ -58,6 +59,67 @@ local plugins = {
     		},
 	    	config = true,
 	},
+	{
+  		"folke/snacks.nvim",
+  		priority = 1000,
+ 		lazy = false,
+  		---@type snacks.Config
+ 		opts = {
+    			-- your configuration comes here
+    			-- or leave it empty to use the default settings
+    			-- refer to the configuration section below
+    			
+        		input = { enabled = true },
+        		notifier = { enabled = true },
+  		},
+	},
+  	{
+    		"yetone/avante.nvim",
+    		event = "VeryLazy",
+    		lazy = false,
+    		version = false, -- set this if you want to always pull the latest change
+   			opts = {
+      			provider = "deepseek",
+      			providers = {
+        			deepseek = {
+          				__inherited_from = "openai",
+        			       	api_key_name = os.getenv("apiKeyOne"),
+          				endpoint = "https://api.deepseek.com",
+          				model = "deepseek-chat",
+          				max_tokens = 8192,
+        			},
+        		},
+    		},
+
+    		build = "make",
+    		dependencies = {
+      			"MunifTanjim/nui.nvim",
+      			{
+        			-- support for image pasting
+        			"HakonHarnes/img-clip.nvim",
+       				event = "VeryLazy",
+        			opts = {
+          			-- recommended settings
+          			default = {
+            			embed_image_as_base64 = false,
+            			prompt_for_file_name = false,
+            			drag_and_drop = {
+              				insert_mode = true,
+            			},
+
+          			},
+        		},
+      		},
+		},
+	},
+	{
+    		'MeanderingProgrammer/render-markdown.nvim',
+    		dependencies = {'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+   		---@module 'render-markdown'
+   		---@type table
+    		opts = {},
+	},
 }
 
+local opts = {}
 require("lazy").setup(plugins, opts)
