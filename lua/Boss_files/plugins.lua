@@ -41,12 +41,9 @@ local plugins = {
 	{	'L3MON4D3/LuaSnip',
 		dependencies = { "rafamadriz/friendly-snippets" },
 	},
+	{ "nvim-tree/nvim-web-devicons", opts = {} },
 	{
 		"ariedov/android-nvim",
-		config = function()
-      			vim.g.android_sdk = "~/appsFor_andev/sdkFor_andev/"
-    			require('android-nvim').setup()
-    		end
 	},
 
 
@@ -83,7 +80,7 @@ local plugins = {
       			providers = {
         			deepseek = {
           				__inherited_from = "openai",
-        			       	api_key_name = os.getenv("apiKeyOne"),
+					api_key_name = "DEEPSEEK_API_KEY",
           				endpoint = "https://api.deepseek.com",
           				model = "deepseek-chat",
           				max_tokens = 8192,
@@ -114,7 +111,7 @@ local plugins = {
 	},
 	{
     		'MeanderingProgrammer/render-markdown.nvim',
-    		dependencies = {'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+		dependencies = {'nvim-tree/nvim-web-devicons' },
    		---@module 'render-markdown'
    		---@type table
     		opts = {},

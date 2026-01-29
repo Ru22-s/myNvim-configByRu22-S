@@ -38,10 +38,16 @@ This repository contains my personalized Neovim configuration for a streamlined 
 - [Flutter Tools](https://github.com/nvim-flutter-tools/flutter-tools.nvim)
 - [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 - [Render Markdown](https://github.com/MeanderingProgrammer/render-markdown.nvim)
+- [Avante](https://github.com/yetone/avante.nvim)
+- [Snacks](https://github.com/folke/snacks.nvim)
+- [Android-nvim](https://github.com/ariedov/android-nvim)
+- [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
 
 ## Notes
 
-- **Security**: API keys are sourced from environment variables (e.g., `os.getenv("DEEPSEEK_API_KEY")`).
+- **Environment Variables**:
+  - `DEEPSEEK_API_KEY`: Required for Avante AI features.
+  - `ANDROID_HOME`: Required for Android development.
 - **Customization**: Modify `lua/Boss_files/*.lua` for personal preferences.
 
 Happy coding!
